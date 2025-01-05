@@ -1,0 +1,48 @@
+The solution involves understanding CSS specificity and either modifying selector specificity or restructuring the CSS to ensure the desired styles are applied correctly. 
+
+Here's one possible approach, modifying the specificity of the selectors:
+
+```css
+div {
+  color: blue;
+}
+
+.container div {
+  color: red;
+}
+
+#myDiv {
+  color: green;
+}
+
+#myDiv.container {
+  color: purple; 
+}
+
+/*Reduce specificity by removing the div selector.  The style for #myDiv.container should now be used*/
+#myDiv.container {
+  color: yellow; 
+}
+
+```
+
+Another approach involves reorganizing the styles to ensure the intended style is applied. The last rule will be applied. For instance:
+
+```css
+/*This selector has high specificity, overriding others*/
+#myDiv.container {
+  color: yellow; 
+}
+
+#myDiv {
+  color: green;
+}
+
+.container div {
+  color: red;
+}
+
+div {
+  color: blue;
+}
+```
